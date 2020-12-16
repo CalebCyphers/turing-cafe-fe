@@ -3,7 +3,7 @@ import "./ResyCard.css"
 
 function ResyCard(props) {
   return(
-    <article className="ResyCard" key={props.reservation.id}>
+    <article className="ResyCard">
       <h3>{props.reservation.name}</h3>
       <p>{props.reservation.date}</p>
       <p>{props.reservation.time}</p>
