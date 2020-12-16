@@ -50,21 +50,18 @@ class ResyForm extends Component {
         ></input>
         <input
           name="date"
-          type="date"
           onChange={this.handleChange}
           value={this.state.date}
           placeholder="date"
         ></input>
         <input
           name="time"
-          type="time"
           onChange={this.handleChange}
           value={this.state.time}
           placeholder="time"
         ></input>
         <input
           name="numberOfGuests"
-          type="number"
           onChange={this.handleChange}
           value={this.state.numberOfGuests}
           placeholder="number of guests"
