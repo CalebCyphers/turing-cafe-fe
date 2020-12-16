@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import getReservations from '../apiCalls'
+import { getReservations } from '../apiCalls.js'
+import ResyCard from '../ResyCard/ResyCard'
 
 class App extends Component {
   constructor() {
@@ -17,9 +18,19 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-
+          {this.buildCards()}
         </div>
       </div>
+    )
+  }
+  componentDidMount() {
+    getReservations()
+    .then(response => this.setState({ reservations: response }))
+  }
+
+  buildCards() {
+    return(
+      this.state.reservations.map(reservation => <ResyCard reservation={reservation}/> )
     )
   }
 }
