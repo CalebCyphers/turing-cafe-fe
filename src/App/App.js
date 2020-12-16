@@ -11,27 +11,32 @@ class App extends Component {
       reservations: []
     }
   }
-  render() {
-    return (
-      <div className="App">
-        <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ResyForm className='resy-form'>
 
-        </ResyForm>
-        <div className='resy-container'>
-          {this.buildCards()}
-        </div>
-      </div>
-    )
-  }
-  componentDidMount() {
+  componentDidMount = () => {
     getReservations()
     .then(response => this.setState({ reservations: response }))
   }
 
-  buildCards() {
+  buildCards = () => {
     return(
       this.state.reservations.map(reservation => <ResyCard reservation={reservation}/> )
+    )
+  }
+
+  newReservation = (newReservation) => {
+    let updatedReservations = this.state.reservations.push(newReservation)
+    this.setState({ reservations: updatedReservations })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1 className='app-title'>Turing Cafe Reservations</h1>
+        <ResyForm newReservation={this.newReservation} className='resy-form' />
+        <div className='resy-container'>
+          {this.buildCards()}
+        </div>
+      </div>
     )
   }
 }
