@@ -19,20 +19,19 @@ class App extends Component {
 
   buildCards = () => {
     return(
-      this.state.reservations.map(reservation => <ResyCard reservation={reservation}/> )
+      this.state.reservations.map(reservation => <ResyCard key={reservation.id} reservation={reservation}/> )
     )
   }
 
   newReservation = (newReservation) => {
-    let updatedReservations = this.state.reservations.push(newReservation)
-    this.setState({ reservations: updatedReservations })
+    this.setState({ reservations: [...this.state.reservations, newReservation] })
   }
 
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ResyForm newReservation={this.newReservation} className='resy-form' />
+        <ResyForm newReservation={this.newReservation} />
         <div className='resy-container'>
           {this.buildCards()}
         </div>
